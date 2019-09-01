@@ -31,8 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +50,80 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Brand.cs">
+      <DependentUpon>ECommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>ECommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ECommerce.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ECommerce.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ECommerce.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ECommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ECommerce.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ECommerce.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice.cs">
+      <DependentUpon>ECommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Member.cs">
+      <DependentUpon>ECommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>ECommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetail.cs">
+      <DependentUpon>ECommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>ECommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>ECommerce.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>ECommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
+      <DependentUpon>ECommerce.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ECommerce.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ECommerce.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="ECommerce.edmx.diagram">
+      <DependentUpon>ECommerce.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ECommerce.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ECommerce.Context.cs</LastGenOutput>
+      <DependentUpon>ECommerce.edmx</DependentUpon>
+    </Content>
+    <Content Include="ECommerce.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ECommerce.edmx</DependentUpon>
+      <LastGenOutput>ECommerce.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
