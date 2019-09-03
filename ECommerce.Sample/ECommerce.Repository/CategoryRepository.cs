@@ -10,6 +10,9 @@ namespace ECommerce.Repository
 {
     public class CategoryRepository : DataRepository<Category>
     {
+        private static MyECommerceEntities db = Tools.GetConnection();
+         ResultProcess<Category> result = new ResultProcess<Category>();
+
         public override Result<int> Delete(Category item)
         {
             throw new NotImplementedException();
@@ -20,9 +23,10 @@ namespace ECommerce.Repository
             throw new NotImplementedException();
         }
 
-        public override Result<List<Category>> List(Category item)
+        public override Result<List<Category>> List()
         {
-            throw new NotImplementedException();
+            List<Category> CatList = db.Categories.ToList();
+            return result.GetListResult(CatList);
         }
 
         public override Result<int> Update(Category item)

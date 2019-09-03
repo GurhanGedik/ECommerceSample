@@ -43,6 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -95,6 +101,7 @@
     <Content Include="Areas\Admin\Content\css\skins\square-borders.css" />
     <Content Include="Areas\Admin\Content\css\theme-admin-extension.css" />
     <Content Include="Areas\Admin\Content\css\theme.css" />
+    <Content Include="Areas\Admin\Content\img\logo-default.png" />
     <Content Include="Areas\Admin\Content\js\custom.js" />
     <Content Include="Areas\Admin\Content\js\examples\examples.advanced.form.js" />
     <Content Include="Areas\Admin\Content\js\examples\examples.ajax.made.easy.js" />
@@ -130,6 +137,7 @@
     <Content Include="Areas\Admin\Content\js\theme.init.js" />
     <Content Include="Areas\Admin\Content\js\theme.js" />
     <Content Include="Areas\Admin\Content\layouts-light-sidebar.html" />
+    <Content Include="Areas\Admin\Content\tables-basic.html" />
     <Content Include="Areas\Admin\Content\vendor\animate\animate.css" />
     <Content Include="Areas\Admin\Content\vendor\autosize\autosize.js" />
     <Content Include="Areas\Admin\Content\vendor\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
@@ -2276,6 +2284,20 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ECommerce.Common\ECommerce.Common.csproj">
+      <Project>{4240f674-702a-4e32-8aa9-f89d89ffff0c}</Project>
+      <Name>ECommerce.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ECommerce.Entity\ECommerce.Entity.csproj">
+      <Project>{73c26f4f-dcbf-4a67-a281-72c8f1f9cc27}</Project>
+      <Name>ECommerce.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ECommerce.Repository\ECommerce.Repository.csproj">
+      <Project>{8274fb04-3275-4bd1-a24d-7b5ca01f2290}</Project>
+      <Name>ECommerce.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

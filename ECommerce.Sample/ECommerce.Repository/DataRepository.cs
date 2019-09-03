@@ -12,7 +12,7 @@ namespace ECommerce.Repository
         public abstract Result<int> Insert(T item);
         public abstract Result<int> Update(T item);
         public abstract Result<int> Delete(T item);
-        public abstract Result<List<T>> List(T item);
+        public abstract Result<List<T>> List();
 
     }
 }
