@@ -1,0 +1,15 @@
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\bin\Debug\ECommerce.Common.dll.config
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\bin\Debug\ECommerce.Common.dll
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\bin\Debug\ECommerce.Common.pdb
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\bin\Debug\ECommerce.Entity.dll
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\bin\Debug\EntityFramework.dll
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\bin\Debug\ECommerce.Entity.pdb
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\bin\Debug\ECommerce.Entity.dll.config
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\bin\Debug\EntityFramework.xml
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\obj\Debug\ECommerce.Common.csprojAssemblyReference.cache
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\obj\Debug\ECommerce.Common.csproj.CoreCompileInputs.cache
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\obj\Debug\ECommerce.Common.csproj.CopyComplete
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\obj\Debug\ECommerce.Common.dll
+C:\Users\gürhan\Documents\GitHub\ECommerceSample\ECommerce.Sample\ECommerce.Common\obj\Debug\ECommerce.Common.pdb
