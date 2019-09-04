@@ -11,7 +11,7 @@ namespace ECommerce.Repository
     public class CategoryRepository : DataRepository<Category>
     {
         private static MyECommerceEntities db = Tools.GetConnection();
-         ResultProcess<Category> result = new ResultProcess<Category>();
+        ResultProcess<Category> result = new ResultProcess<Category>();
 
         public override Result<int> Delete(Category item)
         {
@@ -20,7 +20,8 @@ namespace ECommerce.Repository
 
         public override Result<int> Insert(Category item)
         {
-            throw new NotImplementedException();
+            db.Categories.Add(item);
+            return result.GetResult(db);
         }
 
         public override Result<List<Category>> List()

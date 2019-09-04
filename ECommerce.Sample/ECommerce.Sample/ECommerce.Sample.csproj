@@ -138,6 +138,7 @@
     <Content Include="Areas\Admin\Content\js\theme.js" />
     <Content Include="Areas\Admin\Content\layouts-light-sidebar.html" />
     <Content Include="Areas\Admin\Content\tables-basic.html" />
+    <Content Include="Areas\Admin\Content\ui-elements-modals.html" />
     <Content Include="Areas\Admin\Content\vendor\animate\animate.css" />
     <Content Include="Areas\Admin\Content\vendor\autosize\autosize.js" />
     <Content Include="Areas\Admin\Content\vendor\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
