@@ -1886,7 +1886,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Models\ResultModel\InstanceResult.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1896,7 +1897,6 @@
     <Content Include="Views\web.config" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_AdminPage.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\List.cshtml" />
     <Content Include="Areas\Admin\Content\css\sass\base\_content-with-menu.scss" />
     <Content Include="Areas\Admin\Content\css\sass\base\_header-nav-main-mobile.scss" />
     <Content Include="Areas\Admin\Content\css\sass\base\_header-nav-main.scss" />
@@ -2272,6 +2272,7 @@
     <Content Include="Areas\Admin\Content\vendor\summernote\summernote-bs4.js.map" />
     <Content Include="Areas\Admin\Content\vendor\summernote\summernote-lite.js.map" />
     <Content Include="Areas\Admin\Content\vendor\summernote\summernote.js.map" />
+    <Content Include="Areas\Admin\Views\Category\List.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2282,7 +2283,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>

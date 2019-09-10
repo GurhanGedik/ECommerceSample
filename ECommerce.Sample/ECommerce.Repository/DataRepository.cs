@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Repository
 {
-    public abstract class DataRepository<T>
+    public abstract class DataRepository<T, M>
     {
         public abstract Result<int> Insert(T item);
         public abstract Result<int> Update(T item);
-        public abstract Result<int> Delete(T item);
+        public abstract Result<int> Delete(M id);
         public abstract Result<List<T>> List();
-
+        public abstract Result<T> GetObjById(M id);
     }
 }
