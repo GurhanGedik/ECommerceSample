@@ -45,5 +45,22 @@ namespace ECommerce.Common
             }
             return result;
         }
+        public Result<T> GetT(T data)
+        {
+            Result<T> result = new Result<T>();
+            if (data != null)
+            {
+                result.IsSucceeded = true;
+                result.UserMassage = "Başarılı";
+                result.ProcessResult = data;
+            }
+            else
+            {
+                result.IsSucceeded = false;
+                result.UserMassage = "Başarısız";
+                result.ProcessResult = data;
+            }
+            return result;
+        }
     }
 }

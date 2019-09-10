@@ -8,14 +8,22 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Repository
 {
-    public class CategoryRepository : DataRepository<Category>
+    public class CategoryRepository : DataRepository<Category, Guid>
     {
         private static MyECommerceEntities db = Tools.GetConnection();
         ResultProcess<Category> result = new ResultProcess<Category>();
 
-        public override Result<int> Delete(Category item)
+        public override Result<int> Delete(Guid id)
         {
-            throw new NotImplementedException();
+            Category c = db.Categories.SingleOrDefault(x => x.CategoryId == id);
+            db.Categories.Remove(c);
+            return result.GetResult(db);
+        }
+
+        public override Result<Category> GetObjById(Guid id)
+        {
+            Category c = db.Categories.SingleOrDefault(x => x.CategoryId == id);
+            return result.GetT(c);
         }
 
         public override Result<int> Insert(Category item)
@@ -32,7 +40,10 @@ namespace ECommerce.Repository
 
         public override Result<int> Update(Category item)
         {
-            throw new NotImplementedException();
+            Category c = db.Categories.SingleOrDefault(x => x.CategoryId == item.CategoryId);
+            c.CategoryName = item.CategoryName;
+            c.Description = item.Description;
+            return result.GetResult(db);
         }
     }
 }
