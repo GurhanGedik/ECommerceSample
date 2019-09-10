@@ -18,7 +18,9 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         public ActionResult List()
         {
             result.resultList = cr.List();
-            return View(result.resultList.ProcessResult);
+            ViewBag.deneme = result.resultList.ProcessResult;
+            
+                return View(ViewBag.deneme);
         }
 
         [HttpPost]
