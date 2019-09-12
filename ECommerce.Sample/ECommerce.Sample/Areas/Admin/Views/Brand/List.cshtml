@@ -1,17 +1,17 @@
 ﻿@using ECommerce.Entity
 
-@model IEnumerable<Category>
+@model IEnumerable<Brand>
 @{
     ViewBag.Title = "List";
     Layout = "~/Areas/Admin/Views/Shared/_AdminPage.cshtml";
 }
 
 <header class="page-header">
-    <h2>List Category</h2>
+    <h2>List Brand</h2>
     <div class="right-wrapper text-right">
         <ol class="breadcrumbs">
             <li>
-                <a href="@Url.Action("AddCategory","Category")" class="btn btn-primary text-white"><i class="fas fa-plus"></i> Add Category</a>
+                <a href="@Url.Action("AddBrand","Brand")" class="btn btn-primary text-white"><i class="fas fa-plus"></i> Add Brand</a>
             </li>
         </ol>
 
@@ -26,7 +26,7 @@
         <strong>Operation Successful</strong>
     </div>
 }
-else if(ViewBag.Resultt == false && ViewBag.Resultt != true)
+else if (ViewBag.Resultt == false && ViewBag.Resultt != true)
 {
     <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -38,8 +38,9 @@ else if(ViewBag.Resultt == false && ViewBag.Resultt != true)
 <table class="table table-responsive-md mb-0">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(x => x.CategoryName)</th>
+            <th>@Html.DisplayNameFor(x => x.BrandName)</th>
             <th>@Html.DisplayNameFor(x => x.Description)</th>
+            <th>@Html.DisplayNameFor(x => x.Photo)</th>
             <th>Edit & Delete</th>
         </tr>
     </thead>
@@ -47,11 +48,12 @@ else if(ViewBag.Resultt == false && ViewBag.Resultt != true)
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.CategoryName</td>
+                <td>@item.BrandName</td>
                 <td>@item.Description</td>
+                <td>@item.Photo</td>
                 <td class="actions">
-                    <a href="~/Admin/Category/Edit/@item.CategoryId"><i class="fas fa-pencil-alt"></i></a>
-                    <a href="~/Admin/Category/Delete/@item.CategoryId" class="delete-row"><i class="far fa-trash-alt"></i></a>
+                    <a href="~/Admin/Category/Edit/@item.BrandId"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="~/Admin/Category/Delete/@item.BrandId" class="delete-row"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>
         }
