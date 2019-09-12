@@ -12,7 +12,6 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
-        // GET: Admin/Category
         CategoryRepository cr = new CategoryRepository();
         InstanceResult<Category> result = new InstanceResult<Category>();
 

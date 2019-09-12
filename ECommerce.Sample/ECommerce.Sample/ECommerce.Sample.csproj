@@ -1880,6 +1880,7 @@
     <Content Include="Areas\Admin\Content\vendor\summernote\summernote.css" />
     <Content Include="Areas\Admin\Content\vendor\summernote\summernote.js" />
     <Content Include="Areas\Admin\Content\vendor\summernote\summernote.min.js" />
+    <Content Include="forms-basic.html" />
     <Content Include="Global.asax" />
     <Content Include="ui-elements-alerts.html" />
     <Content Include="Web.config" />
@@ -1887,6 +1888,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Models\ResultModel\InstanceResult.cs" />
     <Compile Include="Global.asax.cs">
@@ -2276,6 +2278,8 @@
     <Content Include="Areas\Admin\Views\Category\List.cshtml" />
     <Content Include="Areas\Admin\Views\Category\AddCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\AddBrand.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
