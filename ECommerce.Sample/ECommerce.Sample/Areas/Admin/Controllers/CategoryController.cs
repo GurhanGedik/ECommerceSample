@@ -15,43 +15,58 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         // GET: Admin/Category
         CategoryRepository cr = new CategoryRepository();
         InstanceResult<Category> result = new InstanceResult<Category>();
+
+        #region List
+
         public ActionResult List()
         {
             result.resultList = cr.List();
-            ViewBag.deneme = result.resultList.ProcessResult;
-            
-                return View(ViewBag.deneme);
+            ViewBag.Resultt = TempData["Operation"];
+            return View(result.resultList.ProcessResult);
         }
+        #endregion
 
+        #region Add Category
+        public ActionResult AddCategory()
+        {
+            return View();
+        }
         [HttpPost]
         public ActionResult AddCategory(Category model)
         {
             model.CategoryId = Guid.NewGuid();
             result.resultint = cr.Insert(model);
+            TempData["Operation"] = result.resultint.IsSucceeded;
             return RedirectToAction("List");
 
         }
+        #endregion
 
+        #region Edit Category
         [HttpGet]
         public ActionResult Edit(Guid id)
         {
-            //id yi çeken methoda ihtiyacım var cunku id üzerinden ilerliyoruz.
             result.TResult = cr.GetObjById(id);
             return View(result.TResult.ProcessResult);
-
         }
         [HttpPost]
         public ActionResult Edit(Category model)
         {
             result.resultint = cr.Update(model);
             ViewBag.Mesaj = result.resultint.UserMassage;
-            return View();
+            TempData["Operation"] = result.resultint.IsSucceeded;
+            return RedirectToAction("List");
         }
+        #endregion
 
+        #region Delete Category
         public ActionResult Delete(Guid id)
         {
             result.resultint = cr.Delete(id);
+            TempData["Operation"] = result.resultint.IsSucceeded;
             return RedirectToAction("List", new { @mesaj = result.resultint.UserMassage });
         }
+        #endregion
+
     }
 }
