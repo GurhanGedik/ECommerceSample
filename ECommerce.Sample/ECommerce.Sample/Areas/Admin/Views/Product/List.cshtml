@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ECommerce.Entity.Product>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminPage.cshtml";
+}
+
+
+<header class="page-header">
+    <h2>List Product</h2>
+    <div class="right-wrapper text-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="@Url.Action("AddProduct","Product")" class="btn btn-primary text-white"><i class="fas fa-plus"></i> Add Product</a>
+            </li>
+        </ol>
+
+        <span class="sidebar-right-toggle"></span>
+    </div>
+</header>
+
+@if (ViewBag.Resultt == true)
+{
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>Operation Successful</strong>
+    </div>
+}
+else if (ViewBag.Resultt == false && ViewBag.Resultt != true)
+{
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>Operation Failed</strong>
+    </div>
+}
+
+
+<table class="table table-responsive-md mb-0">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ProductName)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>@Html.DisplayNameFor(model => model.Category.CategoryName)</th>
+            <th>@Html.DisplayNameFor(model => model.Brand.BrandName)</th>
+            <th>@Html.DisplayNameFor(model => model.Photo)</th>
+            <th>@Html.DisplayNameFor(model => model.Stock)</th>
+            <th>Edit & Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+            <td>@Html.DisplayFor(modelItem => item.Category.CategoryName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Brand.BrandName)</td>
+            <td>
+                <img src="~/Upload/@item.Photo" width="100" height="100" class="img-circle" />
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.Stock)</td>
+            <td class="actions">
+                <a href="~/Admin/Product/Edit/@item.ProductId"><i class="fas fa-pencil-alt"></i></a>
+                <a href="~/Admin/Product/Delete/@item.ProductId" class="delete-row"><i class="far fa-trash-alt"></i></a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+

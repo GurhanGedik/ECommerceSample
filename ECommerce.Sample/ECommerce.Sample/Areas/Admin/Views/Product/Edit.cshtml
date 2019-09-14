@@ -1,0 +1,81 @@
+﻿@using ECommerce.Sample.Areas.Admin.Models.ViewModel
+@using ECommerce.Entity
+@model ProductViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminPage.cshtml";
+}
+
+<header class="page-header">
+    <h2>Edit Product</h2>
+</header>
+<!-- Modal Form -->
+
+<section class="card">
+    <header class="card-header">
+        <h2 class="card-title">Edit Product</h2>
+    </header>
+    @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.Product.ProductId)
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="text">Product Name</label>
+                    @Html.EditorFor(model => model.Product.ProductName, new { htmlAttributes = new{ @class="form-control"}
+        })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="text">Price</label>
+                    @Html.EditorFor(model => model.Product.Price, new { htmlAttributes = new{ @class="form-control"}
+        })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="text">Stock</label>
+
+                    @Html.EditorFor(model => model.Product.Stock, new { htmlAttributes = new{ @class="form-control"}
+                    })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Photo</label><br />
+
+                <img src="~/Upload/@Model.Product.Photo" id="image_upload_preview" width="100" height="100" /><br />
+
+                <input type="file" name="photoPath" id="photoPath" />
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputEmail4">Category</label><br />
+                    @Html.DropDownListFor(model => model.Product.CategoryId, Model.CategoryList, new
+               {
+                   @class = "form-control form-control-lg mb-3"
+               })
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputEmail4">Brand</label><br />
+                    @Html.DropDownListFor(model => model.Product.BrandId, Model.BrandList, new
+               {
+                   @class = "form-control form-control-lg mb-3"
+               })
+                </div>
+            </div>
+        </div>
+        <footer class="card-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-primary" type="submit">Edit</button>
+                    @Html.ActionLink("Cancel", "List", new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </footer>
+    }
+</section>
+
