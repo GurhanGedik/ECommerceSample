@@ -50,10 +50,10 @@ else if (ViewBag.Resultt == false && ViewBag.Resultt != true)
             <tr>
                 <td>@item.BrandName</td>
                 <td>@item.Description</td>
-                <td>@item.Photo</td>
+                <td><img src="~/Upload/@item.Photo" class="img-circle" style="width:75px" height="75" /></td>
                 <td class="actions">
-                    <a href="~/Admin/Category/Edit/@item.BrandId"><i class="fas fa-pencil-alt"></i></a>
-                    <a href="~/Admin/Category/Delete/@item.BrandId" class="delete-row"><i class="far fa-trash-alt"></i></a>
+                    <a href="~/Admin/Brand/Edit/@item.BrandId"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="~/Admin/Brand/Delete/@item.BrandId" class="delete-row"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>
         }
