@@ -15,13 +15,17 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
 
         InstanceResult<Brand> result = new InstanceResult<Brand>();
         BrandRepository br = new BrandRepository();
-        // GET: Admin/Brand
+
+        #region List
         public ActionResult List()
         {
 
             result.resultList = br.List();
             return View(result.resultList.ProcessResult);
         }
+        #endregion
+
+        #region Add Brand
         public ActionResult AddBrand()
         {
             Brand b = new Brand();
@@ -58,7 +62,9 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
                 return View();
             }
         }
+        #endregion
 
+        #region Edit Brand
         public ActionResult Edit(int id)
         {
             result.TResult = br.GetObjById(id);
@@ -84,10 +90,16 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
             return View(model);
 
         }
+        #endregion
+
+        #region Delete Brand
         public ActionResult Delete(int id)
         {
             result.resultint = br.Delete(id);
             return RedirectToAction("List", new { @mesaj = result.resultint.UserMassage });
         }
+        #endregion
+
+
     }
 }

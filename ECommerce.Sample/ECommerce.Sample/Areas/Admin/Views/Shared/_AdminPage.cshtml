@@ -76,14 +76,14 @@
                                 <div class="content">
                                     <ul>
                                         @*<li>
-                                            <a href="#" class="clearfix">
-                                                <figure class="image">
-                                                    <img src="img/!sample-user.jpg" alt="Joseph Doe Junior" class="rounded-circle" />
-                                                </figure>
-                                                <span class="title">Joseph Doe</span>
-                                                <span class="message">Lorem ipsum dolor sit.</span>
-                                            </a>
-                                        </li>*@
+                                                <a href="#" class="clearfix">
+                                                    <figure class="image">
+                                                        <img src="img/!sample-user.jpg" alt="Joseph Doe Junior" class="rounded-circle" />
+                                                    </figure>
+                                                    <span class="title">Joseph Doe</span>
+                                                    <span class="message">Lorem ipsum dolor sit.</span>
+                                                </a>
+                                            </li>*@
                                     </ul>
 
                                     <hr />
@@ -233,6 +233,24 @@
         <script src="~/Areas/Admin/Content/js/custom.js"></script>
         <script src="~/Areas/Admin/Content/js/theme.init.js"></script>
         <script src="~/Areas/Admin/Content/js/examples/examples.modals.js"></script>
+
+        <script type="text/javascript">
+            //https://stackoverflow.com/questions/14284707/how-to-add-script-src-inside-a-view-when-using-layout
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#image_upload_preview').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#photoPath").change(function () {
+                readURL(this);
+            });
+        </script>
 
     </div>
 </body>
