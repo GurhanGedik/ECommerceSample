@@ -1,0 +1,60 @@
+﻿@model ECommerce.Entity.Member
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminPage.cshtml";
+}
+
+<header class="page-header">
+    <h2>Add User</h2>
+</header>
+<!-- Modal Form -->
+
+<section class="card">
+    <header class="card-header">
+        <h2 class="card-title">Add User</h2>
+    </header>
+    @using (Html.BeginForm("AddUser", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <div class="card-body">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inputEmail4">First Name</label>
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inputAddress">Last Name</label>
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inputAddress">Email</label>
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inputAddress">Password</label>
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>        
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inputAddress">Address</label>
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+    </div>
+        <footer class="card-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-primary" type="submit">Create</button>
+                    @Html.ActionLink("Cancel", "List", new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </footer>
+    }
+</section>
+

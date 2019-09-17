@@ -14,5 +14,6 @@ namespace ECommerce.Repository
         public abstract Result<int> Delete(M id);
         public abstract Result<List<T>> List();
         public abstract Result<T> GetObjById(M id);
+        public abstract Result<List<T>> GetLatestObj(int Quantity);
     }
 }

@@ -20,6 +20,11 @@ namespace ECommerce.Repository
             return result.GetResult(db);
         }
 
+        public override Result<List<Product>> GetLatestObj(int Quantity)
+        {
+            return result.GetListResult(db.Products.OrderByDescending(x => x.ProductId).Take(Quantity).ToList());
+        }
+
         public override Result<Product> GetObjById(int id)
         {
             return result.GetT(db.Products.SingleOrDefault(x => x.ProductId == id));
