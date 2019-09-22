@@ -14,7 +14,7 @@ namespace ECommerce.Common
             Result<int> result = new Result<int>();
             int transactionResult = db.SaveChanges();
             if (transactionResult > 0)
-            {
+           {
                 result.UserMassage = "Operation Successful.";
                 result.IsSucceeded = true;
                 result.ProcessResult = transactionResult;

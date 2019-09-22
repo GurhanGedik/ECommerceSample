@@ -1,0 +1,31 @@
+﻿@using ECommerce.Entity
+@model IEnumerable<Product>
+
+
+@foreach (var item in Model)
+{
+    <div class="col-sm-6 col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+        <div class="text-center mb-4">
+            <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                    <a href="~/Home/Detail/@item.ProductId">
+                        @if (item.Photo == null)
+                        {
+                            <img src="~/Content/img/product-4.jpg" class="img-fluid" alt="">
+                        }
+                        else
+                        {
+                            <img src="~/Upload/@item.Photo" class="img-fluid" alt="">
+                        }
+                    </a>
+                    <span class="image-frame-action">
+                        <a href="~/Order/Add/@item.ProductId" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                    </span>
+                </span>
+            </div>
+            <h3 class="text-color-default text-2 mb-0"><a href="~/Home/Detail/@item.ProductId">@item.ProductName</a></h3>
+            <span class="price font-primary text-4"><strong class="text-color-dark">$@item.Price</strong></span>
+        </div>
+    </div>
+
+}

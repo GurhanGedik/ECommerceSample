@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using ECommerce.Entity
+@using ECommerce.Repository
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -50,19 +52,19 @@
                     </div>
                     <div class="header-column justify-content-end">
                         @*<div class="header-search-expanded">
-                            <form method="GET">
-                                <div class="input-group bg-light border">
-                                    <input type="text" class="form-control text-4" name="s" placeholder="I'm looking for..." aria-label="I'm looking for...">
-                                    <span class="input-group-btn">
-                                        <button class="btn" type="submit"><i class="lnr lnr-magnifier text-color-dark"></i></button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>*@
+                                <form method="GET">
+                                    <div class="input-group bg-light border">
+                                        <input type="text" class="form-control text-4" name="s" placeholder="I'm looking for..." aria-label="I'm looking for...">
+                                        <span class="input-group-btn">
+                                            <button class="btn" type="submit"><i class="lnr lnr-magnifier text-color-dark"></i></button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>*@
                         <div class="header-nav justify-content-start">
                             @*<a href="#" class="header-search-button order-1 text-5 d-none d-sm-block mt-1 mr-xl-2">
-                                <i class="lnr lnr-magnifier"></i>
-                            </a>*@
+                                    <i class="lnr lnr-magnifier"></i>
+                                </a>*@
                             <div class="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1">
                                 <nav class="collapse">
                                     <ul class="nav flex-column flex-lg-row" id="mainNav">
@@ -146,11 +148,97 @@
         </div>
     </header>
 
+    <div class="container">
+        <div class="row">
+            <aside class="sidebar col-md-4 col-lg-3 order-2 order-md-1">
+                <div class="accordion accordion-default accordion-toggle accordion-style-1 mb-5" role="tablist">
 
-    <div>
-        @RenderBody()
+                    <div class="card">
+                        <div class="card-header accordion-header" role="tab" id="popularPosts">
+                            <h3 class="text-3 mb-0">
+                                <a href="#" data-toggle="collapse" data-target="#togglePopularPosts" aria-expanded="false" aria-controls="togglePopularPosts">What’s new</a>
+                            </h3>
+                        </div>
+                        <div id="togglePopularPosts" class="accordion-body collapse show" aria-labelledby="popularPosts">
+                            <div class="card-body">
+                                @{
+                                    ProductRepository pr = new ProductRepository();
+                                    foreach (Product item in pr.GetLatestObj(1).ProcessResult)
+                                    {
+                                        <article class="row align-items-center mb-3">
+                                            <div class="col-4 pr-0">
+                                                <a href="~/Home/Detail/@item.ProductId">
+                                                    <img src="~/Upload/@item.Photo" class="img-fluid hover-effect-2" alt="" />
+                                                </a>
+                                            </div>
+                                            <div class="col-8">
+                                                <span class="text-color-primary">$@item.Price</span>
+                                                <h4 class="text-2 mb-0">
+                                                    <a href="~/Home/Detail/@item.ProductId" class="text-1">@item.ProductName</a>
+                                                </h4>
+                                            </div>
+                                        </article>
+                                    }
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header accordion-header" role="tab" id="categories">
+                            <h3 class="text-3 mb-0">
+                                <a href="#" data-toggle="collapse" data-target="#toggleCategories" aria-expanded="false" aria-controls="toggleCategories">Categories</a>
+                            </h3>
+                        </div>
+                        <div id="toggleCategories" class="accordion-body collapse show" aria-labelledby="categories">
+                            <div class="card-body">
+                                <ul class="list list-unstyled">
+                                    @{
+                                            CategoryRepository cr = new CategoryRepository();
+                                        foreach (Category item in cr.List().ProcessResult)
+                                        {
+                                            <li class="mb-2">
+                                                <a href="~/Home/List/@item.CategoryId" class="font-weight-semibold text-color-primary"><i class="fas fa-angle-right ml-1 mr-1 pr-2" id="photos" data-toggle="collapse" data-target="#submenuPhotos" aria-expanded="true" aria-controls="submenuPhotos" role="list" onclick="return false;"></i> @item.CategoryName</a>
+                                            </li>
+                                        }
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header accordion-header" role="tab" id="tags">
+                            <h3 class="text-3 mb-0">
+                                <a href="#" data-toggle="collapse" data-target="#toggleTags" aria-expanded="false" aria-controls="toggleTags">Brands</a>
+                            </h3>
+                        </div>
+                        <div id="toggleTags" class="accordion-body collapse show" role="tabpanel" aria-labelledby="tags">
+                            <div class="card-body">
+                                <ul class="list list-unstyled">
+                                    @{
+                                        BrandRepository br = new BrandRepository();
+                                        foreach (Brand item in br.List().ProcessResult)
+                                        {
+                                            <li class="mb-2">
+                                                <a href="~/Home/List/@item.BrandId" class="font-weight-semibold text-color-primary"><i class="fas fa-angle-right ml-1 mr-1 pr-2" id="photos" data-toggle="collapse" data-target="#submenuPhotos" aria-expanded="true" aria-controls="submenuPhotos" role="list" onclick="return false;"></i> @item.BrandName</a>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+            <div class="col-md-8 col-lg-9 order-1 order-md-2 mb-5 mb-md-0">
+                @RenderBody()
+            </div>
+        </div>
     </div>
-
 
 
 
