@@ -63,13 +63,13 @@
                             </div>*@
                         <div class="header-nav justify-content-start">
                             @*<a href="#" class="header-search-button order-1 text-5 d-none d-sm-block mt-1 mr-xl-2">
-                                    <i class="lnr lnr-magnifier"></i>
-                                </a>*@
+            <i class="lnr lnr-magnifier"></i>
+        </a>*@
                             <div class="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1">
                                 <nav class="collapse">
                                     <ul class="nav flex-column flex-lg-row" id="mainNav">
                                         <li class="dropdown dropdown-mega">
-                                            <a class="dropdown-item dropdown-toggle" href="index.html">
+                                            <a class="dropdown-item dropdown-toggle" href="@Url.Action("ListAllProduct", "Home")">
                                                 Home
                                             </a>
                                         </li>
@@ -82,54 +82,12 @@
                                 </nav>
                             </div>
                             <a href="shop-login.html" class="btn btn-link text-color-default font-weight-bold order-3 d-none d-sm-block ml-auto mr-2 pt-1 text-1">Login</a>
-                            <div class="mini-cart order-4">
-                                <span class="font-weight-bold font-primary">Cart / <span class="cart-total">$0.00</span></span>
-                                <div class="mini-cart-icon">
-                                    <img src="img/icons/cart-bag.svg" class="img-fluid" alt="" />
-                                    <span class="badge badge-primary rounded-circle">0</span>
-                                </div>
-                                <div class="mini-cart-content">
-                                    <div class="inner-wrapper bg-light rounded">
-                                        <div class="mini-cart-product">
-                                            <div class="row">
-                                                <div class="col-7">
-                                                    <h2 class="text-color-default font-secondary text-1 mt-3 mb-0">Blue Hoodies</h2>
-                                                    <strong class="text-color-dark">
-                                                        <span class="qty">1x</span>
-                                                        <span class="product-price">$12.00</span>
-                                                    </strong>
-                                                </div>
-                                                <div class="col-5">
-                                                    <div class="product-image">
-                                                        <a href="#" class="btn btn-light btn-rounded justify-content-center align-items-center"><i class="fas fa-times"></i></a>
-                                                        <img src="img/products/product-2.jpg" class="img-fluid rounded" alt="" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mini-cart-total">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <strong class="text-color-dark">TOTAL:</strong>
-                                                </div>
-                                                <div class="col text-right">
-                                                    <strong class="total-value text-color-dark">$12.00</strong>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mini-cart-actions">
-                                            <div class="row">
-                                                <div class="col pr-1">
-                                                    <a href="shop-cart.html" class="btn btn-dark font-weight-bold rounded text-0">VIEW CART</a>
-                                                </div>
-                                                <div class="col pl-1">
-                                                    <a href="shop-checkout.html" class="btn btn-primary font-weight-bold rounded text-0">CHECKOUT</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                            @Html.Partial("~/Views/Shared/_CartPage.cshtml")
+
+
+
+
                             <button class="header-btn-collapse-nav order-4 ml-3" data-toggle="collapse" data-target=".header-nav-main nav">
                                 <span class="hamburguer">
                                     <span></span>
@@ -195,7 +153,7 @@
                             <div class="card-body">
                                 <ul class="list list-unstyled">
                                     @{
-                                            CategoryRepository cr = new CategoryRepository();
+                                        CategoryRepository cr = new CategoryRepository();
                                         foreach (Category item in cr.List().ProcessResult)
                                         {
                                             <li class="mb-2">
@@ -223,7 +181,7 @@
                                         foreach (Brand item in br.List().ProcessResult)
                                         {
                                             <li class="mb-2">
-                                                <a href="~/Home/List/@item.BrandId" class="font-weight-semibold text-color-primary"><i class="fas fa-angle-right ml-1 mr-1 pr-2" id="photos" data-toggle="collapse" data-target="#submenuPhotos" aria-expanded="true" aria-controls="submenuPhotos" role="list" onclick="return false;"></i> @item.BrandName</a>
+                                                <a href="~/Home/ListByBrand/@item.BrandId" class="font-weight-semibold text-color-primary"><i class="fas fa-angle-right ml-1 mr-1 pr-2" id="photos" data-toggle="collapse" data-target="#submenuPhotos" aria-expanded="true" aria-controls="submenuPhotos" role="list" onclick="return false;"></i> @item.BrandName</a>
                                             </li>
                                         }
                                     }
@@ -367,5 +325,6 @@
 
     <!-- Theme Initialization Files -->
     <script src="~/Content/js/theme.init.js"></script>
+    <script src="~/Content/js/examples/examples.gallery.js"></script>
 </body>
 </html>

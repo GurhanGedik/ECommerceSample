@@ -1,0 +1,67 @@
+﻿@using ECommerce.Entity
+@using ECommerce.Repository
+@{
+    Order ord = (Order)Session["Order"];
+    int? adet = 0;
+    decimal? TotalPrice = 0;
+    if (ord != null)
+    {
+
+        <div class="mini-cart order-4">
+            <span class="font-weight-bold font-primary">Cart / <span class="cart-total">$@TotalPrice</span></span>
+            <div class="mini-cart-icon">
+                <img src="img/icons/cart-bag.svg" class="img-fluid" alt="" />
+                <span class="badge badge-primary rounded-circle">@adet</span>
+            </div>
+            <div class="mini-cart-content">
+                <div class="inner-wrapper bg-light rounded">
+                    <div class="mini-cart-product">
+                        @foreach (OrderDetail item in ord.OrderDetails)
+                        {
+                            adet += item.Quantity;
+                            TotalPrice += item.Price;
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="text-color-default font-secondary text-1 mt-3 mb-0">@item.Product.ProductName</h2>
+                                    <strong class="text-color-dark">
+                                        <span class="qty">1x</span>
+                                        <span class="product-price">$@item.Product.Price</span>
+                                    </strong>
+                                </div>
+                                <div class="col-5">
+                                    <div class="product-image">
+                                        <a href="#" class="btn btn-light btn-rounded justify-content-center align-items-center"><i class="fas fa-times"></i></a>
+                                        <img src="~/Upload/@item.Product.Photo" class="img-fluid rounded" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="mini-cart-total">
+                        <div class="row">
+                            <div class="col">
+                                <strong class="text-color-dark">TOTAL:</strong>
+                            </div>
+                            <div class="col text-right">
+                                <strong class="total-value text-color-dark">$@TotalPrice</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mini-cart-actions">
+                        <div class="row">
+                            <div class="col pr-1">
+                                <a href="shop-cart.html" class="btn btn-dark font-weight-bold rounded text-0">VIEW CART</a>
+                            </div>
+                            <div class="col pl-1">
+                                <a href="shop-checkout.html" class="btn btn-primary font-weight-bold rounded text-0">CHECKOUT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    }
+}
