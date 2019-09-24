@@ -1880,6 +1880,7 @@
     <Content Include="Areas\Admin\Content\vendor\summernote\summernote.css" />
     <Content Include="Areas\Admin\Content\vendor\summernote\summernote.js" />
     <Content Include="Areas\Admin\Content\vendor\summernote\summernote.min.js" />
+    <Content Include="blog-single-post-left-sidebar.html" />
     <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\demos\demo-architecture.css" />
     <Content Include="Content\css\demos\demo-business-consulting.css" />
@@ -4288,6 +4289,8 @@
     <Content Include="forms-basic.html" />
     <Content Include="Global.asax" />
     <Content Include="shop-2.html" />
+    <Content Include="shop-cart.html" />
+    <Content Include="shop-product-detail-right-sidebar.html" />
     <Content Include="ui-elements-alerts.html" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -4301,6 +4304,7 @@
     <Compile Include="Areas\Admin\Models\ResultModel\InstanceResult.cs" />
     <Compile Include="Areas\Admin\Models\ViewModel\ProductViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -4790,6 +4794,12 @@
     <Content Include="Views\Shared\_HomePage.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_ProductList.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\Home\List.cshtml" />
+    <Content Include="Views\Home\ListByBrand.cshtml" />
+    <Content Include="Views\Home\ListAllProduct.cshtml" />
+    <Content Include="Views\Order\DetailList.cshtml" />
+    <Content Include="Views\Shared\_CartPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
