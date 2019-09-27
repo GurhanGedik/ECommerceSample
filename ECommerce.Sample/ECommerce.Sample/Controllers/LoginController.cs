@@ -33,16 +33,24 @@ namespace ECommerce.Sample.Controllers
                     string cookieName = "UserLogin";
                     string cookieValue = user.FirstName + " " + user.LastName.ToUpper();
                     HttpCookie cookie = new HttpCookie(cookieName, cookieValue);
+                    cookie.Expires = DateTime.Now.AddMonths(1);
                     HttpContext.Response.Cookies.Add(cookie);
                     return RedirectToAction("Index", "Home");
                 }
-
-
             }
             ViewBag.Massage = "Incorrect username or password";
 
 
             return View();
+        }
+
+        public ActionResult LogOut()
+        {
+            string cookieName = "UserLogin";
+            HttpCookie myCookie = new HttpCookie(cookieName);
+            myCookie.Expires = DateTime.Now.AddMonths(1);
+            Response.Cookies.Add(myCookie);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

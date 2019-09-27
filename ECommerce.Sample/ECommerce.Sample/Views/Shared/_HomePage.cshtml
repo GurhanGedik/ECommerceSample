@@ -78,17 +78,31 @@
                                                 Products
                                             </a>
                                         </li>
+                                        <li class="dropdown active">
+                                            <a class="dropdown-item dropdown-toggle active" href="#">
+                                                @ViewBag.welcome
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="shop-full-width.html">Full Width</a></li>
+                                                <li><a class="dropdown-item" href="shop-cart.html">Cart</a></li>
+                                                <li><a class="dropdown-item" href="shop-login.html">Login</a></li>
+                                                <li><a class="dropdown-item" href="@Url.Action("LogOut","Login")">Exit</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
-                            <a href="@Url.Action("SingIn","Login")" class="btn btn-link text-color-default font-weight-bold order-3 d-none d-sm-block ml-auto mr-2 pt-1 text-1">Login</a>
 
-                            @ViewBag.welcome
+                            @if (String.IsNullOrEmpty(ViewBag.welcome))
+                            {
+                                <a href="@Url.Action("SingIn","Login")" class="btn btn-link text-color-default font-weight-bold order-3 d-none d-sm-block ml-auto mr-2 pt-1 text-1">Login</a>
+                            }
+                            else
+                            {
+                                <a href="#" class="btn btn-link text-color-default font-weight-bold order-3 d-none d-sm-block ml-auto mr-2 pt-1 text-1"></a>
+                            }
 
                             @Html.Partial("~/Views/Shared/_CartPage.cshtml")
-
-
-
 
                             <button class="header-btn-collapse-nav order-4 ml-3" data-toggle="collapse" data-target=".header-nav-main nav">
                                 <span class="hamburguer">
