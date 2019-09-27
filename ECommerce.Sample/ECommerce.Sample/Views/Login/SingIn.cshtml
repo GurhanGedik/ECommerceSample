@@ -40,46 +40,10 @@
 
                 </div>
             </div>
-            <div class="col-md-6 col-lg-7 col-xl-8 pt-3">
-                <span class="top-sub-title">NEW USER</span>
-                <form id="shopLoginRegister" action="#" method="post">
-                    <div class="form-row">
-                        <div class="form-group col-lg-6">
-                            <label class="text-color-dark" for="shopLoginRegisterName">NAME:</label>
-                            <input type="text" value="" class="form-control bg-light-5 border-0 rounded" name="name" id="shopLoginRegisterName" required>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label class="text-color-dark" for="shopLoginRegisterEmail">EMAIL ADDRESS:</label>
-                            <input type="email" value="" class="form-control bg-light-5 border-0 rounded" name="email" id="shopLoginRegisterEmail" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-lg-6">
-                            <label class="text-color-dark" for="shopLoginRegisterUsername">USERNAME:</label>
-                            <input type="text" value="" class="form-control bg-light-5 border-0 rounded" name="username" id="shopLoginRegisterUsername" required>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label class="text-color-dark" for="shopLoginRegisterPhone">PHONE:</label>
-                            <input type="email" value="" class="form-control bg-light-5 border-0 rounded" name="phone" id="shopLoginRegisterPhone" required>
-                        </div>
-                    </div>
-                    <div class="form-row mb-4">
-                        <div class="form-group col-lg-6">
-                            <label class="text-color-dark" for="shopLoginRegisterPassword">PASSWORD:</label>
-                            <input type="password" value="" class="form-control bg-light-5 border-0 rounded" name="username" id="shopLoginRegisterPassword" required>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label class="text-color-dark" for="shopLoginRegisterPassword2">RE-ENTER PASSWORD:</label>
-                            <input type="password" value="" class="form-control bg-light-5 border-0 rounded" name="password" id="shopLoginRegisterPassword2" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col text-right">
-                            <button type="submit" class="btn btn-primary btn-rounded btn-v-3 btn-h-3 font-weight-bold">REGISTER NOW</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+
+            @Html.Partial("~/Views/Login/_LoginSingIn.cshtml")
+
+
         </div>
     </div>
 </section>

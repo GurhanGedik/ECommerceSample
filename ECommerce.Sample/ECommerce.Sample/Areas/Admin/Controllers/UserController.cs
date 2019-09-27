@@ -19,6 +19,10 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         #region List
         public ActionResult List(string mesaj, int? id)
         {
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
+            {
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+            }
             result.resultList = mr.List();
             if (mesaj != null)
             {
@@ -33,6 +37,10 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         #region Add User 
         public ActionResult AddUser()
         {
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
+            {
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+            }
             UserViewModel uvm = new UserViewModel();
             List<SelectListItem> UserListt = new List<SelectListItem>();
             foreach (UserRole item in ur.List().ProcessResult)
@@ -60,6 +68,10 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         #region Edit User
         public ActionResult Edit(int id)
         {
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
+            {
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+            }
             UserViewModel uvm = new UserViewModel();
             List<SelectListItem> UserListt = new List<SelectListItem>();
             foreach (UserRole item in ur.List().ProcessResult)

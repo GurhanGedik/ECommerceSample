@@ -19,6 +19,10 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
 
         public ActionResult List()
         {
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
+            {
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+            }
             result.resultList = cr.List();
             ViewBag.Resultt = TempData["Operation"];
             return View(result.resultList.ProcessResult);
@@ -28,6 +32,10 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         #region Add Category
         public ActionResult AddCategory()
         {
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
+            {
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+            }
             return View();
         }
         [HttpPost]
@@ -45,6 +53,10 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(Guid id)
         {
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
+            {
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+            }
             result.TResult = cr.GetObjById(id);
             return View(result.TResult.ProcessResult);
         }

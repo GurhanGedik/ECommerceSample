@@ -4800,6 +4800,7 @@
     <Content Include="Views\Shared\_CartPage.cshtml" />
     <Content Include="Views\Payment\Pay.cshtml" />
     <Content Include="Views\Login\SingIn.cshtml" />
+    <Content Include="Views\Login\_LoginSingIn.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

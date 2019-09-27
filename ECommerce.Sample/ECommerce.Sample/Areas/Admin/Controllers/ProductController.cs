@@ -21,6 +21,10 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         #region List
         public ActionResult List()
         {
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
+            {
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+            }
             result.resultList = pr.List();
             return View(result.resultList.ProcessResult);
         }
@@ -30,6 +34,10 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult AddProduct()
         {
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
+            {
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+            }
             ProductViewModel pwm = new ProductViewModel();
             List<SelectListItem> CatList = new List<SelectListItem>();
             List<SelectListItem> BrandList = new List<SelectListItem>();
@@ -71,6 +79,10 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
+            {
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+            }
             ProductViewModel pwm = new ProductViewModel();
             List<SelectListItem> CatList = new List<SelectListItem>();
             List<SelectListItem> BrandList = new List<SelectListItem>();
