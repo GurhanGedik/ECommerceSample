@@ -8,50 +8,39 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Repository
 {
-    public class UserRepository : DataRepository<Member, int>
+    public class UserRepository : DataRepository<UserRole, int>
     {
         private static MyECommerceEntities db = Tools.GetConnection();
-        ResultProcess<Member> result = new ResultProcess<Member>();
+        ResultProcess<UserRole> result = new ResultProcess<UserRole>();
 
         public override Result<int> Delete(int id)
         {
-            Member m = db.Members.SingleOrDefault(x => x.UserId == id);
-            db.Members.Remove(m);
-            return result.GetResult(db);
+            throw new NotImplementedException();
         }
 
-        public override Result<List<Member>> GetLatestObj(int Quantity)
+        public override Result<List<UserRole>> GetLatestObj(int Quantity)
         {
-            return result.GetListResult(db.Members.OrderByDescending(x => x.UserId).Take(Quantity).ToList());
+            throw new NotImplementedException();
         }
 
-        public override Result<Member> GetObjById(int id)
+        public override Result<UserRole> GetObjById(int id)
         {
-            return result.GetT(db.Members.SingleOrDefault(x => x.UserId == id));
+            throw new NotImplementedException();
         }
 
-        public override Result<int> Insert(Member item)
+        public override Result<int> Insert(UserRole item)
         {
-            db.Members.Add(item);
-            return result.GetResult(db);
+            throw new NotImplementedException();
         }
 
-        public override Result<List<Member>> List()
+        public override Result<List<UserRole>> List()
         {
-            return result.GetListResult(db.Members.ToList());
+            return result.GetListResult(db.UserRoles.ToList());
         }
 
-        public override Result<int> Update(Member item)
+        public override Result<int> Update(UserRole item)
         {
-            Member m = db.Members.SingleOrDefault(x => x.UserId == item.UserId);
-            m.FirstName = item.FirstName;
-            m.LastName = item.LastName;
-            m.Password = item.Password;
-            m.RoleId = item.RoleId;
-            m.Email = item.Email;
-            m.Address = item.Address;
-            return result.GetResult(db);
-
+            throw new NotImplementedException();
         }
     }
 }

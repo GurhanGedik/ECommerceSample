@@ -14,6 +14,10 @@ namespace ECommerce.Sample.Controllers
 
         public ActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewBag.welcome = "Welcome " + User.Identity.Name.ToUpper();
+            }
             return View(pr.GetLatestObj(12).ProcessResult);
         }
         public ActionResult Detail(int id)
