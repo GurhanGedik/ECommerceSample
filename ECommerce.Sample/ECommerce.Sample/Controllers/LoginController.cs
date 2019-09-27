@@ -30,7 +30,10 @@ namespace ECommerce.Sample.Controllers
                 var user = db.Members.FirstOrDefault(x => x.Email == model.Email && x.Password == model.Password);
                 if (user != null)
                 {
-                    FormsAuthentication.SetAuthCookie(user.FirstName, true);
+                    string cookieName = "UserLogin";
+                    string cookieValue = user.FirstName + " " + user.LastName.ToUpper();
+                    HttpCookie cookie = new HttpCookie(cookieName, cookieValue);
+                    HttpContext.Response.Cookies.Add(cookie);
                     return RedirectToAction("Index", "Home");
                 }
 
