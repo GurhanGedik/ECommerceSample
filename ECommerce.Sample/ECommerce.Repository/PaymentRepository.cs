@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Repository
 {
-    class PaymentRepository
+    public class PaymentRepository
     {
         private static MyECommerceEntities db = Tools.GetConnection();
 

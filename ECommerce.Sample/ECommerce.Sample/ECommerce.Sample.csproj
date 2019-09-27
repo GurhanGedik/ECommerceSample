@@ -1880,7 +1880,6 @@
     <Content Include="Areas\Admin\Content\vendor\summernote\summernote.css" />
     <Content Include="Areas\Admin\Content\vendor\summernote\summernote.js" />
     <Content Include="Areas\Admin\Content\vendor\summernote\summernote.min.js" />
-    <Content Include="blog-single-post-left-sidebar.html" />
     <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\demos\demo-architecture.css" />
     <Content Include="Content\css\demos\demo-business-consulting.css" />
@@ -4286,12 +4285,7 @@
     <Content Include="Content\vendor\vide\vide.min.js" />
     <Content Include="Content\vendor\vivus\vivus.js" />
     <Content Include="Content\vendor\vivus\vivus.min.js" />
-    <Content Include="forms-basic.html" />
     <Content Include="Global.asax" />
-    <Content Include="shop-2.html" />
-    <Content Include="shop-cart.html" />
-    <Content Include="shop-product-detail-right-sidebar.html" />
-    <Content Include="ui-elements-alerts.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -4303,11 +4297,15 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\ResultModel\InstanceResult.cs" />
     <Compile Include="Areas\Admin\Models\ViewModel\ProductViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModel\UserViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\VM\LoginVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4800,6 +4798,8 @@
     <Content Include="Views\Home\ListAllProduct.cshtml" />
     <Content Include="Views\Order\DetailList.cshtml" />
     <Content Include="Views\Shared\_CartPage.cshtml" />
+    <Content Include="Views\Payment\Pay.cshtml" />
+    <Content Include="Views\Login\SingIn.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4809,7 +4809,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
