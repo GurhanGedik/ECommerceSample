@@ -17,20 +17,21 @@ namespace ECommerce.Sample.Controllers
 
         public ActionResult Add(int id)
         {
-            //Sepetimizi sessionda tutuyoruz. Burada ki sessionun adi: Order(Session[Order])
-            if (Session["Order"] == null)//session yarattık
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
             {
-                //Order isimli sessiona bir adet Order ekledik
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+            }
+            if (Session["Order"] == null)
+            {
+                
                 Order o = new Order();
                 o.OrderDate = DateTime.Now;
                 o.IsPay = false;
                 or.Insert(o);
-                //orderRepository içerisinden son create edilmis bir orderi session uzerinde tutup o yapıya order Detail ekliyoruz.
                 Session["Order"] = or.GetLatestObj(1).ProcessResult[0];
                 OrderDetail od = new OrderDetail();
                 od.OrderId = ((Order)Session["Order"]).OrderId;
                 od.ProductId = id;
-                //OrderDetail içerisinde quantity ve pricei guncelliyoruz.
                 od.Quantity = 1;
                 od.Price = pr.GetObjById(id).ProcessResult.Price;
                 ordrep.Insert(od);
@@ -60,6 +61,10 @@ namespace ECommerce.Sample.Controllers
 
         public ActionResult DetailList()
         {
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
+            {
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+            }
             Order sepetim = (Order)Session["Order"];
             decimal? TotalPrice = 0;
             OrderRepository or = new OrderRepository();

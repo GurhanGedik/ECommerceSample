@@ -13,6 +13,10 @@ namespace ECommerce.Sample.Controllers
         [HttpGet]
         public ActionResult Pay()
         {
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
+            {
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+            }
             ViewBag.PaymentTypes = new SelectList(PaymentRepository.List(), "PaymentId", "PaymentName");
             return View();
         }
