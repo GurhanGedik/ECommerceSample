@@ -8,12 +8,15 @@ using ECommerce.Repository;
 using ECommerce.Entity;
 using ECommerce.Common;
 using System.Web.Security;
+using ECommerce.Sample.Areas.Admin.Models.ResultModel;
 
 namespace ECommerce.Sample.Controllers
 {
     public class LoginController : Controller
     {
         private static MyECommerceEntities db = Tools.GetConnection();
+        InstanceResult<Member> result = new InstanceResult<Member>();
+        MemberRepository mr = new MemberRepository();
 
         // GET: Login
         public ActionResult SingIn()
@@ -35,6 +38,10 @@ namespace ECommerce.Sample.Controllers
                     HttpCookie cookie = new HttpCookie(cookieName, cookieValue);
                     cookie.Expires = DateTime.Now.AddMonths(1);
                     HttpContext.Response.Cookies.Add(cookie);
+                    if (user.RoleId==1)
+                    {
+                        return RedirectToAction("List", "Admin/Product");
+                    }
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -42,6 +49,19 @@ namespace ECommerce.Sample.Controllers
 
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddUser(Member model)
+        {
+            model.RoleId = 2;
+            result.resultint = mr.Insert(model);
+            if (result.resultint.IsSucceeded)
+            {
+                return RedirectToAction("SingIn","Login");
+            }
+            else
+                return View(model);
         }
 
         public ActionResult LogOut()

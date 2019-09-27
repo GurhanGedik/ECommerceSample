@@ -19,7 +19,10 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         #region List
         public ActionResult List()
         {
-
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
+            {
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+            }
             result.resultList = br.List();
             return View(result.resultList.ProcessResult);
         }
@@ -67,6 +70,10 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         #region Edit Brand
         public ActionResult Edit(int id)
         {
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
+            {
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+            }
             result.TResult = br.GetObjById(id);
             return View(result.TResult.ProcessResult);
         }
