@@ -130,8 +130,14 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
                     string path = Server.MapPath("~/Upload/" + photoName);
                     photoPath.SaveAs(path);
                 }
+                model.Product.Photo = photoName;
             }
-            model.Product.Photo = photoName;
+            else
+            {
+                ProductViewModel pwm = new ProductViewModel();
+                pwm.Product = pr.GetObjById(model.Product.ProductId).ProcessResult;
+                model.Product.Photo = pwm.Product.Photo;
+            }
             result.resultint = pr.Update(model.Product);
             if (result.resultint.ProcessResult > 0)
             {

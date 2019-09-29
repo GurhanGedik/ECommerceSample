@@ -82,13 +82,18 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         public ActionResult Edit(Brand model, HttpPostedFileBase PhotoPath)
         {
             string PhotoName = model.Photo;
-            if (PhotoPath.ContentLength > 0 & PhotoPath != null)
+            if (PhotoPath != null)
             {
                 PhotoName = Guid.NewGuid().ToString().Replace("-", "") + ".jpg";
                 string path = Server.MapPath("~/Upload/" + PhotoName);
                 PhotoPath.SaveAs(path);
+                model.Photo = PhotoName;
             }
-            model.Photo = PhotoName;
+            else
+            {
+                result.TResult = br.GetObjById(model.BrandId);
+                model.Photo = result.TResult.ProcessResult.Photo;
+            }
             result.resultint = br.Update(model);
             if (result.resultint.IsSucceeded)
             {
