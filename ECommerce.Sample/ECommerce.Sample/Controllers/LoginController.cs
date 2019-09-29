@@ -38,6 +38,14 @@ namespace ECommerce.Sample.Controllers
                     HttpCookie cookie = new HttpCookie(cookieName, cookieValue);
                     cookie.Expires = DateTime.Now.AddMonths(1);
                     HttpContext.Response.Cookies.Add(cookie);
+
+                    string cookieId = "UserId";
+                    int cookieValueId = user.UserId;
+                    HttpCookie cookie2 = new HttpCookie(cookieId, Convert.ToString(cookieValueId));
+                    cookie2.Expires = DateTime.Now.AddMonths(1);
+                    HttpContext.Response.Cookies.Add(cookie2);
+
+
                     if (user.RoleId==1)
                     {
                         return RedirectToAction("List", "Admin/Product");

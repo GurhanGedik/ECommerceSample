@@ -55,7 +55,7 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         {
             if (HttpContext.Request.Cookies["UserLogin"] != null)
             {
-                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value;
             }
             result.TResult = cr.GetObjById(id);
             return View(result.TResult.ProcessResult);

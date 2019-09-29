@@ -15,7 +15,8 @@ namespace ECommerce.Sample.Controllers
         {
             if (HttpContext.Request.Cookies["UserLogin"] != null)
             {
-                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value; ;
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value;
+                ViewBag.userId = HttpContext.Request.Cookies["UserId"].Value;
             }
             ViewBag.PaymentTypes = new SelectList(PaymentRepository.List(), "PaymentId", "PaymentName");
             return View();
