@@ -73,17 +73,16 @@
                                                 Home
                                             </a>
                                         </li>
-                                        <li class="dropdown dropdown-mega">
-                                            <a class="dropdown-item dropdown-toggle" href="#">
-                                                Products
-                                            </a>
-                                        </li>
                                         <li class="dropdown active">
                                             <a class="dropdown-item dropdown-toggle active" href="#">
                                                 @ViewBag.welcome
                                             </a>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                                @{
+                                                    string userId = ViewBag.userId;
+                                                    <li><a class="dropdown-item" href="~/Profile/Edit/@userId">Profile</a></li>
+                                                }
+
                                                 <li><a class="dropdown-item" href="#">Order History</a></li>
                                                 <li><a class="dropdown-item" href="@Url.Action("LogOut","Login")">Exit</a></li>
                                             </ul>

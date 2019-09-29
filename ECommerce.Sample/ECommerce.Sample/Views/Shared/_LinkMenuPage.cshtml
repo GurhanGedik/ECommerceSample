@@ -1,0 +1,32 @@
+﻿@using ECommerce.Entity
+@model Member
+
+
+<div class="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1">
+    <nav class="collapse">
+        <ul class="nav flex-column flex-lg-row" id="mainNav">
+            <li class="dropdown dropdown-mega">
+                <a class="dropdown-item dropdown-toggle" href="@Url.Action("ListAllProduct", "Home")">
+                    Home
+                </a>
+            </li>
+            <li class="dropdown active">
+                <a class="dropdown-item dropdown-toggle active" href="#">
+                    @ViewBag.welcome
+                </a>
+                <ul class="dropdown-menu">
+                    @{ 
+                        string userId = Convert.ToString(Model.UserId);
+                    }
+                    @if (userId != null)
+                    {
+                        <li><a class="dropdown-item" href="Profile/Edit/@userId">Profile</a></li>
+                    }
+
+                    <li><a class="dropdown-item" href="#">Order History</a></li>
+                    <li><a class="dropdown-item" href="@Url.Action("LogOut","Login")">Exit</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
