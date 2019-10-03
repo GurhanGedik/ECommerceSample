@@ -1,0 +1,54 @@
+﻿@using ECommerce.Entity
+@model IEnumerable<Invoice>
+
+@{
+    ViewBag.Title = "OrderHistory";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+
+
+<div role="main" class="main">
+    <section class="section pt-1">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col">
+                    <div class="overflow-hidden mb-2">
+                        <h2 class="font-weight-bold mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">Order History</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+
+                <div class="col">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td class="text-center">Order ID</td>
+                                <td class="text-center">Payment Type</td>
+                                <td class="text-center">Date Added</td>
+                                <td class="text-right">Total</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Invoice item in Model)
+                            {
+                                <tr style="font-size:14px">
+                                    <td class="text-center">#@item.OrderId</td>
+                                    <td class="text-center">@item.Payment.PaymentName</td>
+                                    <td class="text-center">@item.Order.OrderDate</td>
+                                    <td class="text-right">@item.Order.TotalPrice.Value.ToString("C0")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</div>
+
+
+

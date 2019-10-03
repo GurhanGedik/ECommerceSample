@@ -36,7 +36,8 @@ namespace ECommerce.Repository
 
         public override Result<List<Invoice>> List()
         {
-            throw new NotImplementedException();
+            List<Invoice> invoiceList = db.Invoices.OrderByDescending(t => t.OrderId).ToList();
+            return result.GetListResult(invoiceList);
         }
 
         public override Result<int> Update(Invoice item)
