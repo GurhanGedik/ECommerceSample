@@ -14,6 +14,7 @@ namespace ECommerce.Sample.Controllers
          OrderRepository or = new OrderRepository();
         ProductRepository pr = new ProductRepository();
         OrderDetailRepository ordrep = new OrderDetailRepository();
+        InvoiceRepository invoRepo = new InvoiceRepository();
 
         public ActionResult Add(int id)
         {
@@ -99,6 +100,22 @@ namespace ECommerce.Sample.Controllers
             Order sepetim = (Order)Session["Order"];
             Result<int> result = ordrep.OrderDetailSil(sepetim.OrderId, id);
             return RedirectToAction("DetailList");
+        }
+
+        public ActionResult OrderHistory()
+        {
+            if (HttpContext.Request.Cookies["UserLogin"] != null)
+            {
+                ViewBag.welcome = HttpContext.Request.Cookies["UserLogin"].Value;
+                ViewBag.userId = HttpContext.Request.Cookies["UserId"].Value;
+            }
+            int id = Convert.ToInt32(HttpContext.Request.Cookies["UserId"].Value);
+            //OrderRepository or = new OrderRepository();
+            //Result<Order> order = or.GetObjById(id);
+
+
+
+            return View(invoRepo.List().ProcessResult.Where(x=>x.Order.MemberId==id));
         }
     }
 }

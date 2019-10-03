@@ -4285,6 +4285,7 @@
     <Content Include="Content\vendor\vide\vide.min.js" />
     <Content Include="Content\vendor\vivus\vivus.js" />
     <Content Include="Content\vendor\vivus\vivus.min.js" />
+    <Content Include="elements-tables.html" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -4306,6 +4307,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Mail\OrderModel.cs" />
+    <Compile Include="Models\Mail\SendingMail.cs" />
     <Compile Include="Models\VM\LoginVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -4804,6 +4807,8 @@
     <Content Include="Views\Login\_LoginSingIn.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
     <Content Include="Views\Shared\_LinkMenuPage.cshtml" />
+    <Content Include="Views\Order\OrderHistory.cshtml" />
+    <Content Include="Views\Payment\MailTemplate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
