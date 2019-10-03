@@ -19,8 +19,8 @@ namespace ECommerce.Sample.Models.Mail
                 MailMessage email = new MailMessage();
                 string Host = "smtp.live.com";
                 string smtpUserName = "gurhangedik@hotmail.com";
-                string smtpPassword = "G#r$n537?";
-                email.From = new MailAddress("gurhangedik2@hotmail.com");
+                string smtpPassword = "Parola";
+                email.From = new MailAddress("gurhangedik@hotmail.com");
                 int smtpPort = 587;
                 email.IsBodyHtml = true;
                 email.Subject = firstName + " " + lastName + ", See you next shopping. ";
