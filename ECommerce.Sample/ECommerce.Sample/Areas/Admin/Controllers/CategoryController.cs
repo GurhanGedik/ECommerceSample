@@ -16,7 +16,6 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
         InstanceResult<Category> result = new InstanceResult<Category>();
 
         #region List
-
         public ActionResult List()
         {
             if (HttpContext.Request.Cookies["UserLogin"] != null)

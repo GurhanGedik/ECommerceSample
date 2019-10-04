@@ -92,7 +92,7 @@ namespace ECommerce.Sample.Areas.Admin.Controllers
                 return RedirectToAction("List");
             }
             else
-                return View(model);
+                return RedirectToAction("List");
         }
         #endregion
 

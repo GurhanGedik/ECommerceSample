@@ -16,7 +16,7 @@
                 <label class="text-color-dark" for="shopLoginRegisterName">LAST NAME:</label>
                 @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control bg-light-5 border-0 rounded" } })
             </div>
-            
+
         </div>
         <div class="form-row">
             <div class="form-group col-lg-6">
@@ -34,6 +34,7 @@
                 @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control bg-light-5 border-0 rounded" } })
             </div>
         </div>
+        @ViewBag.Massage
         <div class="form-row">
             <div class="col text-right">
                 <button type="submit" class="btn btn-primary btn-rounded btn-v-3 btn-h-3 font-weight-bold">REGISTER NOW</button>

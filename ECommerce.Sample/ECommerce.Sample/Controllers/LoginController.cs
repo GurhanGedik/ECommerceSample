@@ -46,7 +46,7 @@ namespace ECommerce.Sample.Controllers
                     HttpContext.Response.Cookies.Add(cookie2);
 
 
-                    if (user.RoleId==1)
+                    if (user.RoleId == 1)
                     {
                         return RedirectToAction("List", "Admin/Product");
                     }
@@ -62,14 +62,14 @@ namespace ECommerce.Sample.Controllers
         [HttpPost]
         public ActionResult AddUser(Member model)
         {
+
             model.RoleId = 2;
             result.resultint = mr.Insert(model);
             if (result.resultint.IsSucceeded)
             {
-                return RedirectToAction("SingIn","Login");
+                return RedirectToAction("SingIn", "Login");
             }
-            else
-                return View(model);
+            return RedirectToAction("SingIn", "Login");
         }
 
         public ActionResult LogOut()

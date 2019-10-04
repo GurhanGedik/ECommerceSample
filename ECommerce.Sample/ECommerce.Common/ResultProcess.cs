@@ -51,13 +51,13 @@ namespace ECommerce.Common
             if (data != null)
             {
                 result.IsSucceeded = true;
-                result.UserMassage = "Başarılı";
+                result.UserMassage = "Successful";
                 result.ProcessResult = data;
             }
             else
             {
                 result.IsSucceeded = false;
-                result.UserMassage = "Başarısız";
+                result.UserMassage = "Unsuccessful";
                 result.ProcessResult = data;
             }
             return result;

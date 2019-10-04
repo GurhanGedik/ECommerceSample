@@ -53,10 +53,12 @@ namespace ECommerce.Sample.Controllers
                 Order ord = (Order)Session["Order"];
                 OrderRepository ordrep = new OrderRepository();
                 ord.IsPay = true;
-                ord.MemberId = Convert.ToInt32(HttpContext.Request.Cookies["UserId"].Value);
+                int id= Convert.ToInt32(HttpContext.Request.Cookies["UserId"].Value);
+                ord.MemberId = id;
                 ordrep.Update(ord);
-
-
+                MemberRepository mr = new MemberRepository();
+                model.Order.Member = mr.GetObjById(id).ProcessResult;
+                model.Order.MemberId = ord.MemberId;
                 ViewData["model"] = model;
                 var body = GetEmailTemplate();
                 body.Replace("C2", "C2");

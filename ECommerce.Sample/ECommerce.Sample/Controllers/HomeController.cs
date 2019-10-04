@@ -23,6 +23,7 @@ namespace ECommerce.Sample.Controllers
             }
             return View(pr.GetLatestObj(12).ProcessResult);
         }
+
         public ActionResult Detail(int id)
         {
             if (HttpContext.Request.Cookies["UserLogin"] != null)
@@ -44,6 +45,7 @@ namespace ECommerce.Sample.Controllers
             List<Product> pList = pr.List().ProcessResult.Where(x => x.CategoryId == id).ToList();
             return View(pList);
         }
+
         public ActionResult ListByBrand(int? id)
         {
             if (HttpContext.Request.Cookies["UserLogin"] != null)

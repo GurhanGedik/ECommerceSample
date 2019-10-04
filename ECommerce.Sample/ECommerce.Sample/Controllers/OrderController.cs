@@ -11,7 +11,7 @@ namespace ECommerce.Sample.Controllers
 {
     public class OrderController : Controller
     {
-         OrderRepository or = new OrderRepository();
+        OrderRepository or = new OrderRepository();
         ProductRepository pr = new ProductRepository();
         OrderDetailRepository ordrep = new OrderDetailRepository();
         InvoiceRepository invoRepo = new InvoiceRepository();
@@ -25,7 +25,7 @@ namespace ECommerce.Sample.Controllers
             }
             if (Session["Order"] == null)
             {
-                
+
                 Order o = new Order();
                 o.OrderDate = DateTime.Now;
                 o.IsPay = false;
@@ -85,7 +85,7 @@ namespace ECommerce.Sample.Controllers
                 sepetim.TotalPrice = 0;
                 or.Update(sepetim);
             }
-            if (sepetim==null)
+            if (sepetim == null)
             {
                 return RedirectToAction("ListAllProduct", "Home");
             }
@@ -115,7 +115,7 @@ namespace ECommerce.Sample.Controllers
 
 
 
-            return View(invoRepo.List().ProcessResult.Where(x=>x.Order.MemberId==id));
+            return View(invoRepo.List().ProcessResult.Where(x => x.Order.MemberId == id));
         }
     }
 }
