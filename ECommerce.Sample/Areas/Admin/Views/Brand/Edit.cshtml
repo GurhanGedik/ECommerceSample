@@ -1,0 +1,53 @@
+﻿@model ECommerce.Entity.Brand
+
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminPage.cshtml";
+}
+
+<header class="page-header">
+    <h2>Edit Brand</h2>
+</header>
+<!-- Modal Form -->
+
+<section class="card">
+    <header class="card-header">
+        <h2 class="card-title">Edit Brand</h2>
+    </header>
+    @using (Html.BeginForm("Edit", "Brand", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.BrandId)
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputEmail4">Brand Name</label>
+                    @Html.EditorFor(model => model.BrandName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Description</label>
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Photo</label><br />
+                <img src="~/Upload/@Model.Photo" id="image_upload_preview" width="100" height="100" /><br />
+                <input type="file" name="photoPath" id="photoPath" />
+            </div>
+        </div>
+        <footer class="card-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-primary" type="submit">Edit</button>
+                    @Html.ActionLink("Cancel", "List", new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </footer>
+    }
+</section>
+
+
+
+
