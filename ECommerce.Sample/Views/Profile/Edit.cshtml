@@ -1,0 +1,82 @@
+﻿@using ECommerce.Entity
+@model Member
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+
+<div role="main" class="main">
+    <section class="section pt-1">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col">
+                    <div class="overflow-hidden mb-2">
+                        <h2 class="font-weight-bold mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">The Profile</h2>
+                    </div>
+                </div>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.RoleId)
+                @Html.HiddenFor(model => model.UserId)
+
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-xl-12 mb-5 mb-md-0">
+                        <div class="bg-primary rounded p-5">
+                            <div class="form-row">
+                                <div class="form-group col mb-2">
+                                    <label class="text-color-light-2" for="shopLoginSignInEmail">First Name</label>
+                                    @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control bg-light border-0 rounded text-1" })
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col mb-2">
+                                    <label class="text-color-light-2" for="shopLoginSignInEmail">Last Name</label>
+                                    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control bg-light border-0 rounded text-1" })
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col mb-2">
+                                    <label class="text-color-light-2" for="shopLoginSignInEmail">Email</label>
+                                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control bg-light border-0 rounded text-1" })
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col mb-2">
+                                    <label class="text-color-light-2" for="shopLoginSignInEmail">Password</label>
+                                    @Html.TextBoxFor(x => x.Password, new { @class = "form-control bg-light border-0 rounded text-1" })
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col mb-2">
+                                    <label class="text-color-light-2" for="shopLoginSignInEmail">Adress</label>
+                                    @Html.TextBoxFor(x => x.Address, new { @class = "form-control bg-light border-0 rounded text-1" })
+                                </div>
+                            </div>
+
+                            <div class="form-row pt-2">
+                                <div class="col text-right">
+                                    <button type="submit" class="btn btn-success btn-v-3 btn-h-3 font-weight-bold">EDİT</button>
+                                    @{
+                                        string userId = Convert.ToString(Model.UserId);
+                                        <a href="~/Profile/Delete/@userId" class="btn btn-danger  btn-v-3 btn-h-3 font-weight-bold" onclick="return confirm('Are sure wants to delete?');">DELETE</a>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </section>
+</div>
+

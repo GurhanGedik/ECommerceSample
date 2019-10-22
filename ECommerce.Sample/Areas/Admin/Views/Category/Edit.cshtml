@@ -1,0 +1,52 @@
+﻿@using ECommerce.Entity
+@model Category
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminPage.cshtml";
+}
+
+<header class="page-header">
+    <h2>Edit Category</h2>
+    <div class="right-wrapper text-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="@Url.Action("AddCategory","Category")" class="btn btn-primary text-white"><i class="fas fa-plus"></i> Add Category</a>
+            </li>
+        </ol>
+
+        <span class="sidebar-right-toggle"></span>
+    </div>
+</header>
+<!-- Modal Form -->
+
+<section class="card">
+    <header class="card-header">
+        <h2 class="card-title">Edit Category</h2>
+    </header>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(x => x.CategoryId)
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputEmail4">Category Name</label>
+                    @Html.TextBoxFor(x=>x.CategoryName, new { @class= "form-control" , @id = "inputEmail4" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Description</label>
+
+                @Html.TextBoxFor(x => x.Description, new { @class = "form-control", @id = "inputEmail4" })
+            </div>
+        </div>
+        <footer class="card-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-primary" type="submit">Edit</button>
+                    @Html.ActionLink("Cancel", "List", new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </footer>
+    }
+</section>
+

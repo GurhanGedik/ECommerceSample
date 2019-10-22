@@ -1,0 +1,50 @@
+﻿@using ECommerce.Entity
+@model Product
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+
+    <div class="row mb-5 mt-5">
+        <div class="col-lg-5 mb-5 mb-lg-0">
+            <div class="owl-carousel owl-theme manual dots-style-2 nav-style-2 nav-color-dark mb-3" id="thumbGalleryDetail">
+                <div>
+                    <img src="~/Upload/@Html.DisplayFor(x=>x.Photo)" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbs">
+                <div>
+                    <span class="d-block">
+                        <img alt="Product Image" src="~/Upload/@Html.DisplayFor(x=>x.Photo)" class="img-fluid">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <h2 class="line-height-1 font-weight-bold mb-2">@Html.DisplayFor(x => x.ProductName)</h2>
+            <span class="price font-primary text-4"><strong class="text-color-dark">$@Html.DisplayFor(x => x.Price)</strong></span>
+            <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc. Vivamus bibendum magna Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc. Vivamus bibendum magna ex.</p>
+            <hr class="my-4">
+            <ul class="list list-unstyled">
+                <li>STOK: <strong>@Html.DisplayFor(x => x.Stock)</strong></li>
+                <li>CATEGORY: <strong>@Html.DisplayFor(x => x.Category.CategoryName)</strong></li>
+                <li>BRAND: <strong>@Html.DisplayFor(x => x.Brand.BrandName)</strong></li>
+            </ul>
+            <hr class="my-4">
+            <form class="shop-cart d-flex align-items-center" method="post" enctype="multipart/form-data">
+                <a href="~/Order/Add/@Model.ProductId" class="add-to-cart btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-h-2 btn-fs-2 ml-3">ADD TO CART</a>
+            </form>
+            <hr class="my-4">
+            <div class="d-flex align-items-center">
+                <span class="text-2">SHARE</span>
+                <ul class="social-icons social-icons-dark social-icons-1 ml-3">
+                    <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                    <li class="social-icons-instagram"><a href="http://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    
+    

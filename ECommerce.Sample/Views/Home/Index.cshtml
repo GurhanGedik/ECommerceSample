@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+
+<div role="main" class="main">
+    <section class="section pt-1">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col">
+                    <div class="overflow-hidden mb-2">
+                        <h2 class="font-weight-bold mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">Products</h2>
+                    </div>
+                </div>
+            </div>
+            
+                @Html.Partial("~/Views/Shared/_ProductList.cshtml")
+            
+        </div>
+    </section>
+</div>
+

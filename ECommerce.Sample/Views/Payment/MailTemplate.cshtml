@@ -1,0 +1,86 @@
+﻿@using ECommerce.Entity
+@using ECommerce.Repository
+@using ECommerce.Sample.Models.Mail
+@model ECommerce.Entity.Invoice
+
+<table style="width: 100%; margin-top: 20px;border-collapse: collapse;    border-bottom-width: 2px;" cellpadding=" 10 ">
+    <caption style="border:1px solid #ddd;font-size:18px;background-color: #9de1fe;">
+
+        <h2 style="width: 100%; ">
+            <strong style="font-size: 24px">Order Details</strong>
+        </h2>
+
+    </caption>
+    <tbody>
+        <tr>
+            <td style="width: 25%;border:1px solid #ddd;"><strong>Order ID:</strong></td>
+            <td style="width: 75%;border:1px solid #ddd;"> #@Model.OrderId</td>
+        </tr>
+        <tr>
+            <td style="width: 25%;border:1px solid #ddd;"><strong>Order Date:</strong></td>
+            <td style="width: 75%;border:1px solid #ddd;">@Model.PaymentDate</td>
+        </tr>
+        <tr>
+            <td style="width: 25%;border:1px solid #ddd;"><strong>Payment Method:&nbsp;</strong></td>
+            <td style="width: 75%;border:1px solid #ddd;">@Model.Payment.PaymentName</td>
+        </tr>
+        <tr>
+            <td style="width: 25%;border:1px solid #ddd;"><strong>Address:</strong></td>
+            <td style="width: 75%;border:1px solid #ddd;">@Model.Address</td>
+        </tr>
+    </tbody>
+
+</table>
+
+
+
+<table style="width: 100%; margin-top: 20px;border-collapse: collapse;    border-bottom-width: 2px;" cellpadding=" 10 ">
+    <thead style="border:1px solid #ddd;background-color: #9de1fe;font-size:18px">
+        <tr>
+            <td style="text-align: center;border:1px solid #ddd "><strong>Image</strong></td>
+            <td style="text-align: left;border:1px solid #ddd "><strong>Product Name</strong></td>
+            <td style="text-align: right;border:1px solid #ddd "><strong>Quantity</strong></td>
+            <td style="text-align: right;border:1px solid #ddd "><strong>&nbsp;Unit Price</strong></td>
+            <td style="text-align: right;border:1px solid #ddd "><strong>&nbsp;Total</strong></td>
+        </tr>
+    </thead>
+
+
+    @{ OrderModel ovm = new OrderModel(); OrderRepository repoOr = new OrderRepository(); OrderDetailRepository repoOrd = new OrderDetailRepository(); InvoiceRepository repoInv = new InvoiceRepository(); List
+
+        <OrderModel> infoModel = (from inv in repoInv.List().ProcessResult
+                                          join ord in repoOr.List().ProcessResult on inv.OrderId equals ord.OrderId
+                                          join det in repoOrd.List().ProcessResult on ord.OrderId equals det.OrderId
+                                          where ord.OrderId == Model.OrderId
+                                          select new OrderModel
+                                          { Order = ord, Invoice = inv, OrderDetail = det }).ToList();
+        <tbody>
+
+            @foreach (var item in infoModel)
+            {
+
+                <tr style="border:1px solid #ddd">
+                    <td style="text-align: center;border:1px solid #ddd "><img width="250 " src="cid:@item.OrderDetail.Product.Photo " alt=" " title=" "></td>
+                    <td style="text-align: left;border:1px solid #ddd ">@item.OrderDetail.Product.ProductName </td>
+                    <td style="text-align: right;border:1px solid #ddd ">@item.OrderDetail.Quantity</td>
+                    <td style="text-align: right;border:1px solid #ddd">@item.OrderDetail.Product.Price.Value.ToString(@"C2")</td>
+                    <td style="text-align: right; border:1px solid #ddd">@item.OrderDetail.Price.Value.ToString(@"C2")</td>
+                </tr>
+            }
+
+        </tbody>
+        Order order = repoOr.List().ProcessResult.FirstOrDefault(t => t.OrderId == Model.OrderId);
+        <tfoot style="border:1px solid #ddd;">
+            <tr>
+                <td colspan="3 ">&nbsp;</td>
+                <td style="text-align: right;border:1px solid #ddd; ">&nbsp;<strong>Total:</strong></td>
+                <td style="text-align: right; border:1px solid #ddd;">@order.TotalPrice.Value.ToString(@"C2")</td>
+            </tr>
+        </tfoot>
+    }
+
+
+</table>
+
+
+
